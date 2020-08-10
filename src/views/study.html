@@ -56,30 +56,36 @@
           </div>
         </header>
         <main>
+
+          {% if proffys == "" %}
+            <p class= "no-results">No teachers were found in your search</p>
+          {% else %}
          
-          {%for proffy in proffys %}
-            <article class="teacher-item">
-              <header>
-                  <img 
-                      src="{{proffy.avatar}}" 
-                      alt="{{proffy.name}}">
-                  <div>
-                      <strong>{{proffy.name}}</strong>
-                      <span>{{proffy.subject}}</span>
-                  </div>
-              </header>
+              {%for proffy in proffys %}
+                <article class="teacher-item">
+                  <header>
+                      <img 
+                          src="{{proffy.avatar}}" 
+                          alt="{{proffy.name}}">
+                      <div>
+                          <strong>{{proffy.name}}</strong>
+                          <span>{{proffy.subject}}</span>
+                      </div>
+                  </header>
 
-              <p>{{proffy.bio}}</p>
+                  <p>{{proffy.bio}}</p>
 
-              <footer>
-                  <p>Price/hour<strong>Cad {{proffy.cost}},00</strong></p>
-                  <a href="https://api.whatsapp.com/send?1=pt_BR&phone=55{{proffy.whatsapp}}&text=I have interest in your class of {{proffy.subject}} {{proffy.name}}"
-                  class="button" target="_blank">
-                  <img src="/images/icons/whatsapp.svg" alt="Whatsapp">Get in touch
-                  </a>
-              </footer>
-            </article>
-          {%endfor%}
+                  <footer>
+                      <p>Price/hour<strong>Cad {{proffy.cost}},00</strong></p>
+                      <a href="https://api.whatsapp.com/send?1=pt_BR&phone=55{{proffy.whatsapp}}&text=I have interest in your class of {{proffy.subject}} {{proffy.name}}"
+                      class="button" target="_blank">
+                      <img src="/images/icons/whatsapp.svg" alt="Whatsapp">Get in touch
+                      </a>
+                  </footer>
+                </article>
+              {%endfor%}
+
+          {% endif %}
 
         </main>
     </div>
